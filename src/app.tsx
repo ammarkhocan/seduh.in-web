@@ -8,7 +8,7 @@ export function App() {
     data: products,
     error,
     isLoading,
-  } = useSWR("http://localhost:3000/products", fetcher);
+  } = useSWR(`${import.meta.env.VITE_BACKEND_API_URL}/products`, fetcher);
   return (
     <div className="flex min-h-screen flex-col font-sans">
       <nav className="flex items-center justify-between bg-white px-6 py-4 shadow-md">
