@@ -2,6 +2,7 @@ import type { Products } from "~/module/product/type";
 import type { Route } from "./+types/home";
 import { formatPrice } from "~/lib/format";
 import { Button } from "~/components/ui/button";
+import { BatteryFull } from "lucide-react";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Seduh.in" }, { name: "description", content: "Coffe from the Seduh.in" }];
@@ -33,6 +34,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         ))}
       </ul>
       <div className="flex min-h-svh flex-col items-center justify-center">
+        <BatteryFull />
         <Button>Click me</Button>
       </div>
     </div>
