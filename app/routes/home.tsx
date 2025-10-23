@@ -1,5 +1,6 @@
 import type { Products } from "~/module/product/type";
 import type { Route } from "./+types/home";
+import { formatPrice } from "~/lib/format";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Seduh.in" }, { name: "description", content: "Coffe from the Seduh.in" }];
@@ -23,8 +24,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       <ul className="grid grid-cols-3">
         {products.map((product) => (
           <li key={product.id}>
-            <img src={product.imageUrl} alt={product.name} className="size-54" />
+            <img src={product.imageUrl} alt={product.name} className="size-58" />
             <h2>{product.name}</h2>
+            <p>stock: {product.stock}</p>
+            <p>{formatPrice(product.price)}</p>
           </li>
         ))}
       </ul>
