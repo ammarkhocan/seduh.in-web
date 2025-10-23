@@ -19,7 +19,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
   return (
     <div>
-      <h1>Seduh.in</h1>
+      <h1>Seduh.in Website</h1>
       <ul className="grid grid-cols-3">
         {products.map((product) => (
           <li key={product.id}>
