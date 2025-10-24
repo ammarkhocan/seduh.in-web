@@ -8,52 +8,59 @@ export default function LayoutMain() {
 
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">
-              <img src="/logo.svg" alt="logo" />
-            </Link>
-          </li>
-          <li>
-            <Button asChild>
-              <Link to="/home">
-                <House />
-                Home
+      <nav className="fixed top-0 left-0 right-0 w-full px-6 py-4 border-b bg-white">
+        <ul className="flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <li>
+              <Link to="/">
+                <img src="/logo.svg" alt="logo" className="h-12" />
               </Link>
-            </Button>
-          </li>
-          <li>
-            <Button asChild>
-              <Link to="/product">
-                <Coffee />
-                Product
-              </Link>
-            </Button>
-          </li>
-          <li>
-            <Input type="search" placeholder="Seach coffee..." />
-          </li>
-          <li>
-            <Button asChild>
-              <Link to="/cart">
-                <ShoppingCart />
-                Cart
-              </Link>
-            </Button>
-          </li>
-          <li>
-            <Button asChild>
-              <Link to="/Login">
-                <LogIn />
-                Login
-              </Link>
-            </Button>
-          </li>
+            </li>
+            <li>
+              <Button asChild>
+                <Link to="/">
+                  <House />
+                  Home
+                </Link>
+              </Button>
+            </li>
+            <li>
+              <Button asChild>
+                <Link to="/product">
+                  <Coffee />
+                  Product
+                </Link>
+              </Button>
+            </li>
+          </div>
+
+          <div className="flex items-center gap-6">
+            <li>
+              <Input type="search" placeholder="Search coffee..." className="w-64" />
+            </li>
+            <li>
+              <Button asChild>
+                <Link to="/cart">
+                  <ShoppingCart />
+                  Cart
+                </Link>
+              </Button>
+            </li>
+            <li>
+              <Button asChild>
+                <Link to="/Login">
+                  <LogIn />
+                  Login
+                </Link>
+              </Button>
+            </li>
+          </div>
         </ul>
       </nav>
 
-      <Outlet />
+      <div className="pt-20">
+        <Outlet />
+      </div>
 
       <footer>
         <p>&copy; {year} Seduh.in</p>
