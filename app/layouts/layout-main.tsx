@@ -26,7 +26,7 @@ export default function LayoutMain() {
             </li>
             <li>
               <Button asChild>
-                <Link to="/product">
+                <Link to="/products">
                   <Coffee />
                   Product
                 </Link>
