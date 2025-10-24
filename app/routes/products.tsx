@@ -1,9 +1,6 @@
-import type { Products } from "~/module/product/type";
+import type { Products } from "~/modules/product/type";
 import type { Route } from "./+types/products";
-import { formatPrice } from "~/lib/format";
-import { ShoppingBag } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import { Button } from "~/components/ui/button";
+import { ProductsGrid } from "~/modules/product/components/product-grid";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Products - Seduh.in" }, { name: "description", content: "All products Coffe from the Seduh.in" }];
@@ -32,28 +29,7 @@ export default function ProductsRoute({ loaderData }: Route.ComponentProps) {
 
         {/* Products Section */}
         <section>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            {products.map((product) => (
-              <li key={product.id}>
-                <Card className="hover:shadow-lg transition-shadow">
-                  <img src={product.imageUrl} alt={product.name} className="w-full h-80 object-cover rounded-t-lg" />
-                  <CardHeader>
-                    <CardTitle>{product.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground mb-2">Stok: {product.stock}</p>
-                    <p className="text-lg font-bold text-stone-800 dark:text-stone-300 mb-4">
-                      {formatPrice(product.price)}
-                    </p>
-                    <Button className="w-full bg-stone-800 hover:bg-stone-900 dark:bg-stone-700 dark:hover:bg-stone-800">
-                      <ShoppingBag className="w-4 h-4 mr-2" />
-                      Add to cart
-                    </Button>
-                  </CardContent>
-                </Card>
-              </li>
-            ))}
-          </ul>
+          <ProductsGrid products={products} />
         </section>
       </div>
     </div>
