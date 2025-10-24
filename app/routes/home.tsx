@@ -3,6 +3,7 @@ import type { Route } from "./+types/home";
 import { formatPrice } from "~/lib/format";
 import { ShoppingBag } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import { Button } from "~/components/ui/button";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Seduh.in" }, { name: "description", content: "Coffe from the Seduh.in" }];
@@ -43,10 +44,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                   <p className="text-lg font-bold text-stone-800 dark:text-stone-300 mb-4">
                     {formatPrice(product.price)}
                   </p>
-                  <button className="w-full bg-stone-800 hover:bg-stone-900 dark:bg-stone-700 dark:hover:bg-stone-800 text-white px-4 py-2 rounded-md transition-colors flex items-center justify-center gap-2">
-                    <ShoppingBag className="w-4 h-4" />
+                  <Button className="w-full bg-stone-800 hover:bg-stone-900 dark:bg-stone-700 dark:hover:bg-stone-800">
+                    <ShoppingBag className="w-4 h-4 mr-2" />
                     Add to cart
-                  </button>
+                  </Button>
                 </CardContent>
               </Card>
             </li>
