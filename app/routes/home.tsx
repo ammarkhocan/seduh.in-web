@@ -30,13 +30,18 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           <p className="text-muted-foreground">Pilihan kopi premium untuk Anda</p>
         </div>
 
+        {/* Hero Section */}
+        <section className="mb-12">
+          <img src="/carousel.jpg" alt="hero img" className="w-full max-h-[500px] object-cover rounded-xl shadow-md" />
+        </section>
+
         {/* Products Section */}
         <section>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {products.map((product) => (
               <li key={product.id}>
                 <Card className="hover:shadow-lg transition-shadow">
-                  <img src={product.imageUrl} alt={product.name} className="w-full h-90 object-cover rounded-t-lg" />
+                  <img src={product.imageUrl} alt={product.name} className="w-full h-80 object-cover rounded-t-lg" />
                   <CardHeader>
                     <CardTitle>{product.name}</CardTitle>
                   </CardHeader>
