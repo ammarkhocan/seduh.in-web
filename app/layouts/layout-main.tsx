@@ -62,7 +62,7 @@ export default function LayoutMain() {
         <Outlet />
       </div>
 
-      <footer>
+      <footer className="text-center py-6">
         <p>&copy; {year} Seduh.in</p>
       </footer>
     </div>
