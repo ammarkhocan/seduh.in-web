@@ -26,10 +26,6 @@ export default function HomeRoute({ loaderData }: Route.ComponentProps) {
         <section className="mb-16">
           <CarouselPlugin />
         </section>
-        {/* <section className="mb-12">
-          <img src="/carousel.jpg" alt="hero img" className="w-full max-h-[500px] object-cover rounded-xl shadow-md" />
-        </section> */}
-        {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-foreground mb-2">Seduh.in Website</h1>
           <p className="text-muted-foreground">Pilihan kopi premium untuk Anda</p>
