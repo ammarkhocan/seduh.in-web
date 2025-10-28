@@ -15,10 +15,10 @@ export function meta({ loaderData }: Route.MetaArgs) {
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const slug = params.slug;
 
-  const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/products/${slug}`);
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND_API_URL}/products/${slug}`
+  );
   const product: Product = await response.json();
-
-  console.log(product);
 
   return { product };
 }
@@ -45,27 +45,43 @@ export default function ProductsRoute({ loaderData }: Route.ComponentProps) {
           {/* Detail Product */}
           <div className="flex-1 space-y-6">
             <div>
-              <h2 className="text-4xl font-extrabold text-foreground tracking-tight mb-2">{product.name}</h2>
+              <h2 className="text-4xl font-extrabold text-foreground tracking-tight mb-2">
+                {product.name}
+              </h2>
               <p className="text-muted-foreground text-sm">
-                Origin: <span className="font-medium text-foreground">{product.origin}</span>
+                Origin:{" "}
+                <span className="font-medium text-foreground">
+                  {product.origin}
+                </span>
               </p>
             </div>
 
-            <p className="text-3xl font-semibold">{formatPrice(product.price)}</p>
+            <p className="text-3xl font-semibold">
+              {formatPrice(product.price)}
+            </p>
 
-            <p className="text-base text-muted-foreground leading-relaxed max-w-md">{product.description}</p>
+            <p className="text-base text-muted-foreground leading-relaxed max-w-md">
+              {product.description}
+            </p>
 
             <p className="text-sm text-muted-foreground">
               Stock:{" "}
-              <span className={`font-semibold ${product.stock > 0 ? "text-green-600" : "text-red-500"}`}>
-                {product.stock > 0 ? `${product.stock} available` : "Out of stock"}
+              <span
+                className={`font-semibold ${product.stock > 0 ? "text-green-600" : "text-red-500"}`}
+              >
+                {product.stock > 0
+                  ? `${product.stock} available`
+                  : "Out of stock"}
               </span>
             </p>
 
             {/* Form Quantity */}
             <Form method="post" className="flex flex-row items-end gap-4 pt-4">
               <div>
-                <label htmlFor="quantity" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="quantity"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Quantity
                 </label>
                 <Input

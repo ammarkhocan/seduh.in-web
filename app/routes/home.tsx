@@ -1,17 +1,20 @@
-import type { Products } from "~/modules/product/type";
 import type { Route } from "./+types/home";
+import type { Products } from "~/modules/product/type";
 import { ProductsGrid } from "~/modules/product/components/product-grid";
-import { CarouselPlugin } from "~/modules/home/components/carousel-plugin";
+import { HomeCarousel } from "~/modules/home/components/home-carousel";
 
 export function meta({}: Route.MetaArgs) {
-  return [{ title: "Seduh.in" }, { name: "description", content: "Coffe from the Seduh.in" }];
+  return [
+    { title: "Seduh.in" },
+    { name: "description", content: "Coffe from the Seduh.in" },
+  ];
 }
 
 export async function clientLoader() {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/products`);
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND_API_URL}/products`
+  );
   const products: Products = await response.json();
-
-  console.log(products);
 
   return { products };
 }
@@ -24,11 +27,15 @@ export default function HomeRoute({ loaderData }: Route.ComponentProps) {
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <section className="mb-16">
-          <CarouselPlugin />
+          <HomeCarousel />
         </section>
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-2">Seduh.in Website</h1>
-          <p className="text-muted-foreground">Pilihan kopi premium untuk Anda</p>
+          <h1 className="text-4xl font-bold text-foreground mb-2">
+            Seduh.in Website
+          </h1>
+          <p className="text-muted-foreground">
+            Pilihan kopi premium untuk Anda
+          </p>
         </div>
 
         {/* Products Section */}

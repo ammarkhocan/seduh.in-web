@@ -1,4 +1,4 @@
-import { ShoppingBag } from "lucide-react";
+import { ShoppingBagIcon } from "lucide-react";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
@@ -12,17 +12,23 @@ export function ProductsGrid({ products }: { products: Products }) {
         <li key={product.id}>
           <Link to={`/products/${product.slug}`}>
             <Card className="hover:shadow-lg transition-shadow">
-              <img src={product.imageUrl} alt={product.name} className="w-full h-80 object-cover rounded-t-lg" />
+              <img
+                src={product.imageUrl}
+                alt={product.name}
+                className="w-full h-80 object-cover rounded-t-lg"
+              />
               <CardHeader>
                 <CardTitle>{product.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground mb-2">Stok: {product.stock}</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Stok: {product.stock}
+                </p>
                 <p className="text-lg font-bold text-stone-800 dark:text-stone-300 mb-4">
                   {formatPrice(product.price)}
                 </p>
                 <Button className="w-full bg-stone-800 hover:bg-stone-900 dark:bg-stone-700 dark:hover:bg-stone-800">
-                  <ShoppingBag className="w-4 h-4 mr-2" />
+                  <ShoppingBagIcon className="w-4 h-4 mr-2" />
                   Add to cart
                 </Button>
               </CardContent>
