@@ -1,6 +1,7 @@
 import type { Products } from "~/modules/product/type";
 import type { Route } from "./+types/home";
 import { ProductsGrid } from "~/modules/product/components/product-grid";
+import { CarouselPlugin } from "~/modules/home/components/carousel-plugin";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Seduh.in" }, { name: "description", content: "Coffe from the Seduh.in" }];
@@ -22,9 +23,12 @@ export default function HomeRoute({ loaderData }: Route.ComponentProps) {
     <div className="min-h-screen bg-background py-8">
       <div className="container mx-auto px-4">
         {/* Hero Section */}
-        <section className="mb-12">
-          <img src="/carousel.jpg" alt="hero img" className="w-full max-h-[500px] object-cover rounded-xl shadow-md" />
+        <section className="mb-16">
+          <CarouselPlugin />
         </section>
+        {/* <section className="mb-12">
+          <img src="/carousel.jpg" alt="hero img" className="w-full max-h-[500px] object-cover rounded-xl shadow-md" />
+        </section> */}
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-foreground mb-2">Seduh.in Website</h1>

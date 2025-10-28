@@ -8,7 +8,7 @@ export default function LayoutMain() {
 
   return (
     <div>
-      <nav className="fixed top-0 left-0 right-0 w-full px-6 py-4 border-b bg-white">
+      <nav className="fixed top-0 left-0 right-0 w-full z-50 px-6 py-4 border-b bg-white shadow-md">
         <ul className="flex items-center justify-between">
           <div className="flex items-center gap-6">
             <li>
@@ -48,7 +48,7 @@ export default function LayoutMain() {
             </li>
             <li>
               <Button asChild>
-                <Link to="/Login">
+                <Link to="/login">
                   <LogIn />
                   Login
                 </Link>
