@@ -5,8 +5,11 @@ import { Form } from "react-router";
 import { formatPrice } from "~/lib/format";
 import { Input } from "~/components/ui/input";
 
-export function meta({}: Route.MetaArgs) {
-  return [{ title: "Products Details" }, { name: "description", content: "Products Description." }];
+export function meta({ loaderData }: Route.MetaArgs) {
+  return [
+    { title: `${loaderData.product.name} - Seduh.in` },
+    { name: "description", content: loaderData.product.description },
+  ];
 }
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
