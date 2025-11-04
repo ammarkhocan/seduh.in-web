@@ -21,10 +21,6 @@ export function ProductsGrid({ products }: { products: Products }) {
                 <p className="text-lg font-bold text-stone-800 dark:text-stone-300 mb-4">
                   {formatPrice(product.price)}
                 </p>
-                <Button className="w-full bg-stone-800 hover:bg-stone-900 dark:bg-stone-700 dark:hover:bg-stone-800">
-                  <ShoppingBag className="w-4 h-4 mr-2" />
-                  Add to cart
-                </Button>
               </CardContent>
             </Card>
           </Link>

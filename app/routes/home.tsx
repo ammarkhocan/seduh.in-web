@@ -11,8 +11,6 @@ export async function clientLoader() {
   const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/products`);
   const products: Products = await response.json();
 
-  console.log(products);
-
   return { products };
 }
 
