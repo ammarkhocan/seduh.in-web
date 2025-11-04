@@ -1,6 +1,4 @@
-import { ShoppingBag } from "lucide-react";
 import { Link } from "react-router";
-import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { formatPrice } from "~/lib/format";
 import type { Products } from "~/modules/product/type";
