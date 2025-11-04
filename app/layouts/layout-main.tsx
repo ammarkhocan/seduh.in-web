@@ -1,4 +1,4 @@
-import { Coffee, House, LogIn, ShoppingCart } from "lucide-react";
+import { CoffeeIcon, HouseIcon, LogInIcon, ShoppingCartIcon } from "lucide-react";
 import { Link, Outlet } from "react-router";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
@@ -19,7 +19,7 @@ export default function LayoutMain() {
             <li>
               <Button asChild>
                 <Link to="/">
-                  <House />
+                  <HouseIcon />
                   Home
                 </Link>
               </Button>
@@ -27,7 +27,7 @@ export default function LayoutMain() {
             <li>
               <Button asChild>
                 <Link to="/products">
-                  <Coffee />
+                  <CoffeeIcon />
                   Products
                 </Link>
               </Button>
@@ -41,7 +41,7 @@ export default function LayoutMain() {
             <li>
               <Button asChild>
                 <Link to="/cart">
-                  <ShoppingCart />
+                  <ShoppingCartIcon />
                   Cart
                 </Link>
               </Button>
@@ -49,7 +49,7 @@ export default function LayoutMain() {
             <li>
               <Button asChild>
                 <Link to="/login">
-                  <LogIn />
+                  <LogInIcon />
                   Login
                 </Link>
               </Button>
