@@ -1,16 +1,8 @@
-"use client";
-
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../../../components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "~/components/ui/carousel";
 
-export function CarouselPlugin() {
+export function HomeCarousel() {
   const plugin = React.useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
 
   return (
