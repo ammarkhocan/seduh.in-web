@@ -7,7 +7,7 @@ export default function LayoutMain() {
   const year = new Date().getFullYear();
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <nav className="fixed top-0 left-0 right-0 w-full z-50 px-6 py-4 border-b bg-white shadow-md">
         <ul className="flex items-center justify-between">
           <div className="flex items-center gap-6">
@@ -58,7 +58,7 @@ export default function LayoutMain() {
         </ul>
       </nav>
 
-      <div className="pt-20">
+      <div className="flex-1 pt-20">
         <Outlet />
       </div>
 
