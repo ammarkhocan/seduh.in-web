@@ -19,7 +19,7 @@ export default function LoginRoute({}: Route.ComponentProps) {
         </CardHeader>
 
         <CardContent>
-          <Form method="post" className="space-y-4">
+          <Form method="POST" className="space-y-4">
             <div className="space-y-1">
               <Label htmlFor="email">Email</Label>
               <Input id="email" name="email" type="email" placeholder="you@example.com" className="w-full" />
@@ -28,14 +28,13 @@ export default function LoginRoute({}: Route.ComponentProps) {
               <Label htmlFor="password">Password</Label>
               <Input id="password" name="password" type="password" placeholder="********" className="w-full" />
             </div>
+            <Button type="submit" className="w-full  text-white font-medium">
+              Log In
+            </Button>
           </Form>
         </CardContent>
 
         <CardFooter className="flex flex-col space-y-3">
-          <Button type="submit" className="w-full  text-white font-medium">
-            Log In
-          </Button>
-
           <p className="text-center text-sm text-gray-600">
             Don't have an account?{" "}
             <Link className="text-amber-700 hover:underline font-bold" to="/register">
@@ -46,4 +45,21 @@ export default function LoginRoute({}: Route.ComponentProps) {
       </Card>
     </div>
   );
+}
+
+export async function clientAction({ request }: Route.ClientActionArgs) {
+  const formData = await request.formData();
+
+  const email = formData.get("email")?.toString();
+  const password = formData.get("password")?.toString();
+
+  const registerBody = {
+    email,
+    password,
+  };
+
+  console.log(registerBody);
+
+  // const project = await someApi.updateProject({ title });
+  return null;
 }
