@@ -1,4 +1,4 @@
-import { Form } from "react-router";
+import { Form, Link } from "react-router";
 import type { Route } from "./+types/register";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
@@ -24,17 +24,14 @@ export default function RegisterRoute({}: Route.ComponentProps) {
               <Label htmlFor="username">Username</Label>
               <Input id="username" name="username" type="text" placeholder="Enter your username" className="w-full" />
             </div>
-
             <div className="space-y-1">
               <Label htmlFor="email">Email</Label>
               <Input id="email" name="email" type="email" placeholder="you@example.com" className="w-full" />
             </div>
-
             <div className="space-y-1">
               <Label htmlFor="fullName">Full Name</Label>
               <Input id="fullName" name="fullName" type="text" placeholder="Your full name" className="w-full" />
             </div>
-
             <div className="space-y-1">
               <Label htmlFor="password">Password</Label>
               <Input id="password" name="password" type="password" placeholder="********" className="w-full" />
@@ -49,9 +46,9 @@ export default function RegisterRoute({}: Route.ComponentProps) {
 
           <p className="text-center text-sm text-gray-600">
             Already have an account?{" "}
-            <a href="/login" className="text-amber-700 hover:underline font-medium">
+            <Link className="text-amber-700 hover:underline font-bold" to="/login">
               Login here
-            </a>
+            </Link>
           </p>
         </CardFooter>
       </Card>
