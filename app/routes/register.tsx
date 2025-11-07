@@ -1,9 +1,10 @@
-import { Form, Link } from "react-router";
+import { Form, Link, redirect } from "react-router";
 import type { Route } from "./+types/register";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "~/components/ui/card";
+import type { RegisterResponse } from "~/modules/user/type";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Register" }];
@@ -57,20 +58,21 @@ export default function RegisterRoute({}: Route.ComponentProps) {
 export async function clientAction({ request }: Route.ClientActionArgs) {
   const formData = await request.formData();
 
-  const username = formData.get("username")?.toString();
-  const email = formData.get("email")?.toString();
-  const fullName = formData.get("fullName")?.toString();
-  const password = formData.get("password")?.toString();
-
   const registerBody = {
-    username,
-    email,
-    fullName,
-    password,
+    username: formData.get("username")?.toString(),
+    email: formData.get("email")?.toString(),
+    fullName: formData.get("fullName")?.toString(),
+    password: formData.get("password")?.toString(),
   };
 
-  console.log(registerBody);
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/auth/register`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(registerBody),
+  });
 
-  // const project = await someApi.updateProject({ title });
-  return null;
+  const registerResponse: RegisterResponse = await response.json();
+  console.log(registerResponse);
+
+  return redirect("/login");
 }
