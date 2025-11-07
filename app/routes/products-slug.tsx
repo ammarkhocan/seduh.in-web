@@ -31,7 +31,7 @@ export default function ProductsRoute({ loaderData }: Route.ComponentProps) {
       <div className="container mx-auto px-6">
         {/* Product Detail */}
         <section className="flex flex-col md:flex-row items-start justify-center gap-12 max-w-6xl mx-auto">
-          {/* Image Product */}
+          {/* Product Image */}
           <div className="flex-1 w-full">
             <div className="overflow-hidden rounded-2xl shadow-xl bg-muted flex items-center justify-center">
               <img
@@ -42,7 +42,7 @@ export default function ProductsRoute({ loaderData }: Route.ComponentProps) {
             </div>
           </div>
 
-          {/* Detail Product */}
+          {/* Product Details */}
           <div className="flex-1 space-y-6">
             <div>
               <h2 className="text-4xl font-extrabold text-foreground tracking-tight mb-2">{product.name}</h2>
@@ -62,7 +62,7 @@ export default function ProductsRoute({ loaderData }: Route.ComponentProps) {
               </span>
             </p>
 
-            {/* Form Quantity */}
+            {/* Quantity Form */}
             <Form method="post" className="flex flex-row items-end gap-4 pt-4">
               <div>
                 <label htmlFor="quantity" className="block text-sm font-medium text-foreground mb-2">
@@ -81,8 +81,25 @@ export default function ProductsRoute({ loaderData }: Route.ComponentProps) {
                 />
               </div>
 
-              <Button type="submit">Add to Cart</Button>
+              <Button type="submit" disabled={product.stock === 0}>
+                Add to Cart
+              </Button>
             </Form>
+
+            {/* Product Info */}
+            <div className="mt-6 border-t border-muted-foreground/20 pt-4">
+              <h3 className="text-lg font-semibold text-foreground mb-3">Product Information</h3>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="text-muted-foreground">Product ID:</span>
+                  <span className="ml-2 font-medium text-foreground">{product.id}</span>
+                </div>
+                <div>
+                  <span className="text-muted-foreground">SKU:</span>
+                  <span className="ml-2 font-medium text-foreground">{product.slug}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>
