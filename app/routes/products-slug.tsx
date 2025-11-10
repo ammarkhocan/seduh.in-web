@@ -68,6 +68,7 @@ export default function ProductsRoute({ loaderData }: Route.ComponentProps) {
                 <label htmlFor="quantity" className="block text-sm font-medium text-foreground mb-2">
                   Quantity
                 </label>
+                <input type="hidden" name="productId" defaultValue={product.id} />
                 <Input
                   id="quantity"
                   name="quantity"
