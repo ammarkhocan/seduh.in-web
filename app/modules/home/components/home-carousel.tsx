@@ -5,6 +5,15 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 export function HomeCarousel() {
   const plugin = React.useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
 
+  // Daftar gambar dari folder public/images
+  const images = [
+    "/images/slide-1.jpg",
+    "/images/slide-2.jpg",
+    "/images/slide-3.jpg",
+    "/images/slide-4.jpg",
+    "/images/slide-5.jpg",
+  ];
+
   return (
     <Carousel
       plugins={[plugin.current]}
@@ -13,10 +22,10 @@ export function HomeCarousel() {
       onMouseLeave={() => plugin.current.reset()}
     >
       <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
+        {images.map((src, index) => (
           <CarouselItem key={index}>
-            <div className="p-4 flex items-center justify-center bg-muted rounded-xl h-[400px]">
-              <span className="text-2xl font-semibold">Slide {index + 1}</span>
+            <div className="relative w-full h-[400px]">
+              <img src={src} alt={`Slide ${index + 1}`} className="w-full h-full object-cover" />
             </div>
           </CarouselItem>
         ))}
