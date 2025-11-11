@@ -1,15 +1,13 @@
 import Cookies from "js-cookie";
-import type { MeResponse } from "~/modules/user/type";
+import type { CartResponse } from "~/modules/user/type";
 import type { Route } from "./+types/cart";
 import { redirect } from "react-router";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Cart" }];
 }
 
 export async function clientLoader() {
-  //Token
   const token = Cookies.get("token");
 
   if (!token) return redirect("/login");
@@ -23,13 +21,13 @@ export async function clientLoader() {
     return redirect("/login");
   }
 
-  const meResponse: MeResponse = await response.json();
+  const cart: CartResponse = await response.json();
 
-  return { meResponse };
+  return { cart };
 }
 
 export default function CartRoute({ loaderData }: Route.ComponentProps) {
-  const { meResponse } = loaderData;
+  const { cart } = loaderData;
 
   return (
     <div className="container mx-auto py-10">
