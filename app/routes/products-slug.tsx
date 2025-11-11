@@ -1,9 +1,12 @@
+import Cookies from "js-cookie";
+
 import type { Product } from "~/modules/product/type";
 import type { Route } from "./+types/products-slug";
 import { Button } from "~/components/ui/button";
-import { Form } from "react-router";
+import { Form, redirect } from "react-router";
 import { formatPrice } from "~/lib/format";
 import { Input } from "~/components/ui/input";
+import { AddCartItemSchema } from "~/modules/cart/schema";
 
 export function meta({ loaderData }: Route.MetaArgs) {
   return [
@@ -18,9 +21,35 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/products/${slug}`);
   const product: Product = await response.json();
 
-  console.log(product);
+  // console.log(product);
 
   return { product };
+}
+
+export async function action({ request }: Route.ActionArgs) {
+  const token = Cookies.get("token");
+
+  const formData = await request.formData();
+
+  const addCartItemData = {
+    productId: String(formData.get("productId")),
+    quantity: Number(formData.get("quantity")),
+  };
+
+  if (!token) return redirect("/login");
+
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/cart/items`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: JSON.stringify(addCartItemData),
+  });
+
+  if (!response.ok) {
+    Cookies.remove("token");
+    return redirect("/login");
+  }
+
+  return redirect("/cart");
 }
 
 export default function ProductsRoute({ loaderData }: Route.ComponentProps) {
