@@ -34,34 +34,40 @@ export default function HomeRoute({ loaderData }: Route.ComponentProps) {
   const { meResponse } = loaderData;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-6">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6">Dashboard</h1>
-        <p>Your account overview</p>
+    <div className="min-h-screen py-16 px-6">
+      <div className="max-w-2xl mx-auto space-y-6">
+        {/* Header */}
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">Welcome, {meResponse.fullName}!</h1>
+          <p className="text-gray-600">Here’s your account overview</p>
+        </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="mt-9 text-center">Profile</CardTitle>
+        {/* Profile Card */}
+        <Card className="shadow-sm border border-gray-200">
+          <CardHeader className="border-b pb-3 mt-6">
+            <CardTitle className="text-xl font-semibold text-center text-gray-800">Profile Information</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-8">
+
+          <CardContent className="space-y-6 pt-6">
+            <div className="grid grid-cols-2 gap-6">
               <div>
-                <span className="text-gray-600 block mb-1">User ID</span>
-                <span className="font-medium text-gray-900">{meResponse.id}</span>
+                <p className="text-gray-500 text-sm mb-1">User ID</p>
+                <p className="font-medium text-gray-900">{meResponse.id}</p>
               </div>
               <div>
-                <span className="text-gray-600 block mb-1">Full Name</span>
-                <span className="font-medium text-gray-900">{meResponse.fullName}</span>
+                <p className="text-gray-500 text-sm mb-1">Full Name</p>
+                <p className="font-medium text-gray-900">{meResponse.fullName}</p>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-8">
+
+            <div className="grid grid-cols-2 gap-6">
               <div>
-                <span className="text-gray-600 block mb-1">Username</span>
-                <span className="font-medium text-gray-900">{meResponse.username}</span>
+                <p className="text-gray-500 text-sm mb-1">Username</p>
+                <p className="font-medium text-gray-900">{meResponse.username}</p>
               </div>
               <div>
-                <span className="text-gray-600 block mb-1">Email</span>
-                <span className="font-medium text-gray-900">{meResponse.email}</span>
+                <p className="text-gray-500 text-sm mb-1">Email</p>
+                <p className="font-medium text-gray-900">{meResponse.email}</p>
               </div>
             </div>
           </CardContent>
