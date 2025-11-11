@@ -25,8 +25,8 @@ export default function HomeRoute({ loaderData }: Route.ComponentProps) {
           <HomeCarousel />
         </section>
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-2">Seduh.in Website</h1>
-          <p className="text-muted-foreground">Pilihan kopi premium untuk Anda</p>
+          <h1 className="text-4xl font-bold text-foreground mb-2">Your Daily Dose of Freshly Brewed Coffee</h1>
+          <p className="text-muted-foreground">Enjoy every sip with Seduh.in made from the finest local beans.</p>
         </div>
 
         {/* Products Section */}
