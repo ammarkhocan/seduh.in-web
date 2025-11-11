@@ -7,11 +7,11 @@ export function HomeCarousel() {
 
   // Daftar gambar dari folder public/images
   const images = [
-    "/images/slide-1.jpg",
-    "/images/slide-2.jpg",
-    "/images/slide-3.jpg",
-    "/images/slide-4.jpg",
-    "/images/slide-5.jpg",
+    "https://1ea7bnszm7.ucarecd.net/f31477da-2ac7-4c0f-bfbb-97a0796faed0/-/preview/1000x391",
+    "https://1ea7bnszm7.ucarecd.net/29703a54-029f-4cc1-9101-6ab41971b784/-/preview/1000x390",
+    "https://1ea7bnszm7.ucarecd.net/2f9d263e-db2a-4351-a3f0-ae53696df153/-/preview/1000x321",
+    "https://1ea7bnszm7.ucarecd.net/87aed4be-18be-4a50-8bee-e4593cb85185/-/preview/1000x410",
+    "https://1ea7bnszm7.ucarecd.net/ec266fa6-250a-43e4-8952-082c42a58c2d/-/preview/1000x390",
   ];
 
   return (
