@@ -12,7 +12,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function RegisterRoute({}: Route.ComponentProps) {
   return (
-    <div className="flex items-center justify-center py-8">
+    <div className="flex items-center justify-center py-7">
       <Card className="w-full max-w-md shadow-md border border-gray-200">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-semibold text-gray-800 mt-5">Create New Account</CardTitle>
