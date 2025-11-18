@@ -6,7 +6,6 @@ import { Button } from "~/components/ui/button";
 import { Form, redirect } from "react-router";
 import { formatPrice } from "~/lib/format";
 import { Input } from "~/components/ui/input";
-import { AddCartItemSchema } from "~/modules/cart/schema";
 
 export function meta({ loaderData }: Route.MetaArgs) {
   return [
@@ -18,7 +17,13 @@ export function meta({ loaderData }: Route.MetaArgs) {
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const slug = params.slug;
 
-  const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/products/${slug}`);
+  const token = Cookies.get("token");
+
+  console.log({ token });
+
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND_API_URL}/products/${slug}`
+  );
   const product: Product = await response.json();
 
   // console.log(product);
@@ -26,8 +31,10 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   return { product };
 }
 
-export async function action({ request }: Route.ActionArgs) {
+export async function clientAction({ request }: Route.ClientActionArgs) {
   const token = Cookies.get("token");
+
+  console.log({ token });
 
   const formData = await request.formData();
 
@@ -38,11 +45,17 @@ export async function action({ request }: Route.ActionArgs) {
 
   if (!token) return redirect("/login");
 
-  const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/cart/items`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${token}` },
-    body: JSON.stringify(addCartItemData),
-  });
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND_API_URL}/cart/items`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(addCartItemData),
+    }
+  );
 
   if (!response.ok) {
     Cookies.remove("token");
@@ -74,30 +87,50 @@ export default function ProductsRoute({ loaderData }: Route.ComponentProps) {
           {/* Product Details */}
           <div className="flex-1 space-y-6">
             <div>
-              <h2 className="text-4xl font-extrabold text-foreground tracking-tight mb-2">{product.name}</h2>
+              <h2 className="text-4xl font-extrabold text-foreground tracking-tight mb-2">
+                {product.name}
+              </h2>
               <p className="text-muted-foreground text-sm">
-                Origin: <span className="font-medium text-foreground">{product.origin}</span>
+                Origin:{" "}
+                <span className="font-medium text-foreground">
+                  {product.origin}
+                </span>
               </p>
             </div>
 
-            <p className="text-3xl font-semibold">{formatPrice(product.price)}</p>
+            <p className="text-3xl font-semibold">
+              {formatPrice(product.price)}
+            </p>
 
-            <p className="text-base text-muted-foreground leading-relaxed max-w-md">{product.description}</p>
+            <p className="text-base text-muted-foreground leading-relaxed max-w-md">
+              {product.description}
+            </p>
 
             <p className="text-sm text-muted-foreground">
               Stock:{" "}
-              <span className={`font-semibold ${product.stock > 0 ? "text-green-600" : "text-red-500"}`}>
-                {product.stock > 0 ? `${product.stock} available` : "Out of stock"}
+              <span
+                className={`font-semibold ${product.stock > 0 ? "text-green-600" : "text-red-500"}`}
+              >
+                {product.stock > 0
+                  ? `${product.stock} available`
+                  : "Out of stock"}
               </span>
             </p>
 
             {/* Quantity Form */}
             <Form method="post" className="flex flex-row items-end gap-4 pt-4">
               <div>
-                <label htmlFor="quantity" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="quantity"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Quantity
                 </label>
-                <input type="hidden" name="productId" defaultValue={product.id} />
+                <input
+                  type="hidden"
+                  name="productId"
+                  defaultValue={product.id}
+                />
                 <Input
                   id="quantity"
                   name="quantity"
@@ -118,15 +151,21 @@ export default function ProductsRoute({ loaderData }: Route.ComponentProps) {
 
             {/* Product Info */}
             <div className="mt-6 border-t border-muted-foreground/20 pt-4">
-              <h3 className="text-lg font-semibold text-foreground mb-3">Product Information</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-3">
+                Product Information
+              </h3>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <span className="text-muted-foreground">Product ID:</span>
-                  <span className="ml-2 font-medium text-foreground">{product.id}</span>
+                  <span className="ml-2 font-medium text-foreground">
+                    {product.id}
+                  </span>
                 </div>
                 <div>
                   <span className="text-muted-foreground">SKU:</span>
-                  <span className="ml-2 font-medium text-foreground">{product.slug}</span>
+                  <span className="ml-2 font-medium text-foreground">
+                    {product.slug}
+                  </span>
                 </div>
               </div>
             </div>

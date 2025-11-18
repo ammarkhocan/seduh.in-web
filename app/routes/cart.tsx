@@ -27,6 +27,7 @@ export async function clientLoader() {
 }
 
 export default function CartRoute({ loaderData }: Route.ComponentProps) {
+  const { cart } = loaderData;
   return (
     <div className="container mx-auto py-10">
       <h1 className="text-3xl font-bold mb-8">Shoping Cart</h1>
